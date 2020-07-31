@@ -20,7 +20,7 @@ public class App {
 		//appContext.register(AppConfig2.class);
 		//appContext.refresh();
 		
-		Persona per = (Persona) appContext.getBean("persona");
+		Persona per = (Persona) appContext.getBean("personaBean2");
 		
 		System.out.println(per.getId() + " " + per.getNombre() + " " + per.getApodo() + " " + per.getPais().getNombre() + " " + per.getPais().getCiudad().getNombre());
 		
