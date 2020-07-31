@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.greppiluciano.beans.AppConfig;
 import com.greppiluciano.beans.AppConfig2;
+import com.greppiluciano.beans.Ciudad;
 import com.greppiluciano.beans.Mundo;
 import com.greppiluciano.beans.Persona;
 
@@ -22,7 +23,13 @@ public class App {
 		
 		Persona per = (Persona) appContext.getBean("personaBean2");
 		
-		System.out.println(per.getId() + " " + per.getNombre() + " " + per.getApodo() + " " + per.getPais().getNombre() + " " + per.getPais().getCiudad().getNombre());
+		String nombresCiudades = "";
+		
+		for (Ciudad ciu : per.getPais().getCiudades()) {
+			nombresCiudades += ciu.getNombre() + "-";
+		}
+		
+		System.out.println(per.getId() + " " + per.getNombre() + " " + per.getApodo() + " " + per.getPais().getNombre() + " " + nombresCiudades);
 		
 		// Cierra el appContext
 		((ConfigurableApplicationContext)appContext).close();
