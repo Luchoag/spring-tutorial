@@ -3,8 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="persona" class="com.greppiluciano.beans.Persona" name="personaBean2">
-		<property name="pais" ref="pais"></property>
+	<bean id="persona" class="com.greppiluciano.beans.Persona" autowire="byName">
 		<property name="id" value="1"></property>
 		<property name="nombre" value="Luciano"></property>
 		<property name="apodo" value="Lucho"></property>
@@ -13,24 +12,11 @@
 	
 	<bean id="pais" class="com.greppiluciano.beans.Pais">
 		<property name="nombre" value="Argentina"></property>
-		<property name="ciudades">
-			<list>
-				<ref bean="ciudad1"/>
-				<ref bean="ciudad2"/>
-				<ref bean="ciudad3"/>
-			</list>
-		</property>
 		
 	</bean>
-	<!-- Se recomienda para listas cortas -->
-	<bean id="ciudad1" class="com.greppiluciano.beans.Ciudad">
+
+	<bean id="ciudad" class="com.greppiluciano.beans.Ciudad">
 		<property name="nombre" value="Buenos Aires"></property>
-	</bean>	
-	<bean id="ciudad2" class="com.greppiluciano.beans.Ciudad">
-		<property name="nombre" value="Mar del Plata"></property>
-	</bean>	
-	<bean id="ciudad3" class="com.greppiluciano.beans.Ciudad">
-		<property name="nombre" value="Rosario"></property>
 	</bean>	
 	
 	<alias name="persona" alias="personaBean"/>

@@ -21,15 +21,9 @@ public class App {
 		//appContext.register(AppConfig2.class);
 		//appContext.refresh();
 		
-		Persona per = (Persona) appContext.getBean("personaBean2");
+		Persona per = (Persona) appContext.getBean("persona");
 		
-		String nombresCiudades = "";
-		
-		for (Ciudad ciu : per.getPais().getCiudades()) {
-			nombresCiudades += ciu.getNombre() + "-";
-		}
-		
-		System.out.println(per.getId() + " " + per.getNombre() + " " + per.getApodo() + " " + per.getPais().getNombre() + " " + nombresCiudades);
+		System.out.println(per.getId() + " " + per.getNombre() + " " + per.getApodo() + " " + per.getPais().getNombre() + " " + per.getCiudad().getNombre());
 		
 		// Cierra el appContext
 		((ConfigurableApplicationContext)appContext).close();
