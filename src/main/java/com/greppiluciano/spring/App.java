@@ -13,25 +13,43 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.greppiluciano.beans.AppConfig;
 import com.greppiluciano.beans.AppConfig2;
+import com.greppiluciano.beans.Barcelona;
 import com.greppiluciano.beans.Ciudad;
+import com.greppiluciano.beans.Jugador;
 import com.greppiluciano.beans.Mundo;
 import com.greppiluciano.beans.Persona;
+import com.greppiluciano.interfaces.IEquipo;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		
-
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
+		
+		/*
+		 *  En este tutorial, se crean las clases Jugador, Barcelona, Juventus. Estas dos últimas implementan la interfaz IEquipo.
+		 *  A través de los beans, tenemos un acceso dinámico a las propiedades de cada clase, apoyándonos en la flexibilidad de las interfaces.
+		 */
+		
+		// Llamamos al bean "messi" con sus propiedades iniciales.
+		Jugador jug = (Jugador) appContext.getBean("messi");
 
-		Persona per = (Persona) appContext.getBean("persona");
+		//Mostramos su información
+		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar());
 		
-		Ciudad ciu = (Ciudad) appContext.getBean("ciudad");
-				
-		System.out.println(per.getApodo());
-		System.out.println(ciu.getNombre());
+		//Creamos una instancia de la interfaz IEquipo de la clase Juventus
+		IEquipo equipo = (IEquipo) appContext.getBean("juventus");
+		System.out.println(equipo.mostrar());
 		
+		//Le asignamos al jugador en setEquipo, el equipo de ese objeto
+		jug.setEquipo(equipo);
+		
+		//Imprimimos nuevamente la información actualizada
+		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar());
+		
+		//Volvemos a asignar al objeto equipo la referencia a Barcelona
+		equipo = (IEquipo) appContext.getBean("barcelona");
+		System.out.println(equipo.mostrar());
 		
 		// Cierra el appContext
 		((ConfigurableApplicationContext)appContext).close();

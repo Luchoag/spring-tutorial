@@ -3,22 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- Con el siguiente bean, se cargan las annotations de Java para reconocer las anotaciones PostConstruct y PreDestroy. -->
-	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
-	
-	<bean id="persona" class="com.greppiluciano.beans.Persona" autowire="byName">
-		<property name="apodo" value="Lucho"></property>
+	<bean id="messi" class="com.greppiluciano.beans.Jugador">
+		<property name="numero" value="10"></property>
+		<property name="nombre" value="Lionel Messi"></property>
+		<property name="equipo" ref="barcelona"></property>
 	</bean>
 	
-	<bean id="pais" class="com.greppiluciano.beans.Pais">
-		<property name="nombre" value="Argentina"></property>
-		
-	</bean>
-
-	<bean id="ciudad" class="com.greppiluciano.beans.Ciudad">
-		<property name="nombre" value="Buenos Aires"></property>
-	</bean>	
-	
-	<alias name="persona" alias="personaBean"/>
+	<bean id="barcelona" class="com.greppiluciano.beans.Barcelona"></bean>
+	<bean id="juventus" class="com.greppiluciano.beans.Juventus"></bean>
 	
 </beans>

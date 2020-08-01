@@ -3,7 +3,11 @@ package com.greppiluciano.beans;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class Persona {
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.DisposableBean;
+
+
+public class Persona implements InitializingBean, DisposableBean {
 
 	private int id;
 	private String nombre;
@@ -11,9 +15,7 @@ public class Persona {
 	private Pais pais;
 	private Ciudad ciudad;
 	
-	/* Se borran los default-init-method y default-destroy-method y se agregan las annotations para que automáticamente se ejecuten esos métodos.
-	 * 
-	 */
+	/* 
 	@PostConstruct
 	private void init() {
 		System.out.println("Antes de inicializar el bean.");
@@ -23,7 +25,7 @@ public class Persona {
 	private void destroy() {
 		System.out.println("Bean a punto de ser destruido.");
 	}
-	
+	*/
 	
 	public Pais getPais() {
 		return pais;
@@ -59,6 +61,16 @@ public class Persona {
 	}
 	public void setApodo(String apodo) {
 		this.apodo = apodo;
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("AFTER PERSONA");
+		
+	}
+
+	public void destroy() throws Exception {
+		System.out.println("DESTROY PERSONA");
+		
 	}
 	
 
