@@ -15,6 +15,13 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		
+		/*
+		 * Cuando ejecutamos la aplicación y se lee el ApplicationContext, lo que se hace implícitamente es la carga de todos los beans
+		 * en la memoria para que estén listos para usarse cuando los llamemos con el método getBean().
+		 * Esto se puede cambiar agregando la propiedad lazy-init="true" en el Bean (dentro de beans.xml), para que sean instanciados únicamente
+		 * cuando se requiere mediante el método getBean().
+		 */
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
 		//AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
 		//appContext.register(AppConfig.class);
@@ -27,7 +34,8 @@ public class App {
 		/*
 		 * Con Singleton en el scope del Bean, estas propiedades se asignan a las dos instancias, ya que en
 		 * realidad es una sola.
-		 * Con Prototype en el scope del Bean, se asignan sólo a la instancia referenciada. 
+		 * Con Prototype en el scope del Bean, se asignan sólo a la instancia referenciada.
+		 * Si no se coloca Scope en el Bean, por defecto es Singleton. 
 		 */
 		per.setId(1);
 		per.setNombre("Luciano");
