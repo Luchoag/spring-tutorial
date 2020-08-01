@@ -12,6 +12,7 @@ import com.greppiluciano.interfaces.IEquipo;
 public class Jugador {
 
 	private int id;
+	@Value("Lionel Messi")
 	private String nombre;
 	@Autowired
 	@Qualifier("barcelona")

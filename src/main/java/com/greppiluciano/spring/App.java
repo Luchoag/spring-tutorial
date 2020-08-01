@@ -34,7 +34,7 @@ public class App {
 		System.out.println("2- Juventus");
 		int respuesta = sc.nextInt();
 
-		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(com.greppiluciano.spring.AppConfig.class);
 		Jugador jug = (Jugador) appContext.getBean("jugador1");		
 		
 		switch (respuesta) {
