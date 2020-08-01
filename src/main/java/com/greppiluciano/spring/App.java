@@ -26,30 +26,10 @@ public class App {
 		
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
 		
-		/*
-		 *  En este tutorial, se crean las clases Jugador, Barcelona, Juventus. Estas dos últimas implementan la interfaz IEquipo.
-		 *  A través de los beans, tenemos un acceso dinámico a las propiedades de cada clase, apoyándonos en la flexibilidad de las interfaces.
-		 */
 		
-		// Llamamos al bean "messi" con sus propiedades iniciales.
 		Jugador jug = (Jugador) appContext.getBean("messi");
 
-		//Mostramos su información
 		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar());
-		
-		//Creamos una instancia de la interfaz IEquipo de la clase Juventus
-		IEquipo equipo = (IEquipo) appContext.getBean("juventus");
-		System.out.println(equipo.mostrar());
-		
-		//Le asignamos al jugador en setEquipo, el equipo de ese objeto
-		jug.setEquipo(equipo);
-		
-		//Imprimimos nuevamente la información actualizada
-		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar());
-		
-		//Volvemos a asignar al objeto equipo la referencia a Barcelona
-		equipo = (IEquipo) appContext.getBean("barcelona");
-		System.out.println(equipo.mostrar());
 		
 		// Cierra el appContext
 		((ConfigurableApplicationContext)appContext).close();
