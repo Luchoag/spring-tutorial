@@ -6,6 +6,8 @@
 
 package com.greppiluciano.spring;
 
+import java.util.Scanner;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,6 +18,7 @@ import com.greppiluciano.beans.AppConfig2;
 import com.greppiluciano.beans.Barcelona;
 import com.greppiluciano.beans.Ciudad;
 import com.greppiluciano.beans.Jugador;
+import com.greppiluciano.beans.Juventus;
 import com.greppiluciano.beans.Mundo;
 import com.greppiluciano.beans.Persona;
 import com.greppiluciano.interfaces.IEquipo;
@@ -24,12 +27,30 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
+		Scanner sc = new Scanner(System.in);
 		
-		
-		Jugador jug = (Jugador) appContext.getBean("messi");
+		System.out.println("Elija un equipo:");
+		System.out.println("1- Barcelona");
+		System.out.println("2- Juventus");
+		int respuesta = sc.nextInt();
 
-		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar());
+		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/greppiluciano/xml/beans.xml");
+		Jugador jug = (Jugador) appContext.getBean("jugador1");		
+		
+		switch (respuesta) {
+		case 1:
+			jug.setEquipo(new Barcelona());
+			break;
+		case 2:
+			jug.setEquipo(new Juventus());
+			break;
+		default:
+			break;
+		}
+		
+
+
+		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar() + " - " + jug.getCamiseta().getNumero() + " - " + jug.getCamiseta().getMarca().getNombre());
 		
 		// Cierra el appContext
 		((ConfigurableApplicationContext)appContext).close();
