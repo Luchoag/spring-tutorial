@@ -1,5 +1,8 @@
 package com.greppiluciano.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Marca {
 	
 	private int id;

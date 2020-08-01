@@ -8,11 +8,15 @@ import org.springframework.stereotype.Component;
 
 import com.greppiluciano.interfaces.IEquipo;
 
+@Component
 public class Jugador {
 
 	private int id;
 	private String nombre;
+	@Autowired
+	@Qualifier("barcelona")
 	private IEquipo equipo;
+	@Autowired
 	private Camiseta camiseta;
 	public int getId() {
 		return id;

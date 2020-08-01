@@ -49,7 +49,6 @@ public class App {
 		}
 		
 
-
 		System.out.println(jug.getNombre() + " - " + jug.getEquipo().mostrar() + " - " + jug.getCamiseta().getNumero() + " - " + jug.getCamiseta().getMarca().getNombre());
 		
 		// Cierra el appContext
