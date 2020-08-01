@@ -8,6 +8,21 @@ public class Persona {
 	private Pais pais;
 	private Ciudad ciudad;
 	
+	
+	/*
+	 * En beans.xml agregamos las propiedades init-method y destroy-method, las cuales se ejecutan antes y después de inicializar el bean respectivamente.
+	 * Si en App.java no cerramos el appContext, el destroy-method nunca se ejecuta.
+	 * Los nombres de los métodos init() y destroy() son indistintos, lo importante es hacer referencia a ellos correctamente en beans.xml.  
+	 */
+	private void init() {
+		System.out.println("Antes de inicializar el bean.");
+	}
+	
+	private void destroy() {
+		System.out.println("Bean a punto de ser destruido.");
+	}
+	
+	
 	public Pais getPais() {
 		return pais;
 	}
