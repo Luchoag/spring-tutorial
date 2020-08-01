@@ -5,17 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
-	<context:annotation-config />
-		
-	<bean id="messi" class="com.greppiluciano.beans.Jugador">
-		<property name="numero" value="10"></property>
-		<property name="nombre" value="Lionel Messi"></property>
-		<!-- <property name="equipo" ref="barcelona"></property> -->
-	</bean>
-	
-	<bean id="barcelona" class="com.greppiluciano.beans.Barcelona">
-		<qualifier value="barcelonaQualifier"></qualifier>
-	</bean>
-	<bean id="juventus" class="com.greppiluciano.beans.Juventus"></bean>
-	
+	<context:component-scan base-package="com.greppiluciano"></context:component-scan>		
+			
 </beans>

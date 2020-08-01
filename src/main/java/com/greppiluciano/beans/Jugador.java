@@ -3,21 +3,19 @@ package com.greppiluciano.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.greppiluciano.interfaces.IEquipo;
 
+@Component("messi")
 public class Jugador {
 
 	private int numero;
+	@Value("Lionel Messi")
 	private String nombre;
 	@Autowired
-	@Qualifier("barcelonaQualifier")
 	private IEquipo equipo;
-	
-	/*
-	 * Se agrega la anotación Autowired para que haga el "cableado" automáticamente a la propiedad que corresponde. Si hay más de una propiedad del mismo tipo
-	 * (como en este caso, Barcelona y Juventus, ambos equipos), se agrega el Qualifier para que el programa sepa a cuál de los dos beans se hace referencia. 
-	 */
 	
 	public int getNumero() {
 		return numero;
@@ -28,7 +26,7 @@ public class Jugador {
 	public String getNombre() {
 		return nombre;
 	}
-	@Required
+	//@Required
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
